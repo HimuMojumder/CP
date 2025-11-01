@@ -2,8 +2,8 @@
 using namespace std;
 int main(){
       //tolower
-    //     string t=tolower(t);
-   //   string  p=toupper(p)
+    //     char t=tolower(t);
+   //       char p=toupper(p);
       string s;
     getline(cin,s);
     vector<string>v;
@@ -19,3 +19,4 @@ int main(){
     return 0;
 
 }
+
