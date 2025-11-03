@@ -17,7 +17,10 @@ int bigmode(int a,int b){
 //a^-1 % p=(a^(p-2)) %p
 //(a/c)%p =( (a%p)*(bigmode(c,p-2))%p) )%P;
 
-
+// a^(b^c) calculate
+/*
+a^b % mod m =(a^(b % phi(mod)) %mod;
+    */
 int main(){
     int a,b;
     cin>>a>>b;
@@ -27,4 +30,5 @@ int main(){
     return 0;
 
 }
+
 
