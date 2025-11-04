@@ -60,6 +60,17 @@ vector<ll>phiii(ll n){
    return result;
 }
 
+/*
+sum of all coprime of N is
+sum=(phi(N)*N)/2;
+
+amra jodi N ar sathe 1 theke N porjon tw shobgula shongkhar GCD bair kore
+akta array te store kori tahole shekhane i jotobar thakbe ta holo if i is a divisor of N
+number of i in array is =phi(N/i);
+
+*/
+
+
 int main(){
     int N=1e5;
        int nuner_of_coprimeOf_N =phi(N);
@@ -69,4 +80,5 @@ int main(){
 
     
     return 0;
+
 }
