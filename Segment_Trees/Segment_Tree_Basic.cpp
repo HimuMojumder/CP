@@ -37,6 +37,7 @@ typedef vector<vi> vvi;
 typedef map<int, int> mii;
 
 // ------------------ Custom Comparator ------------------
+
 bool cmp(pair<int, int> &p1, pair<int, int> &p2)
 {
     if ((p1.first - p1.second) == (p2.first - p2.second))
@@ -52,6 +53,9 @@ bool cmp(pair<int, int> &p1, pair<int, int> &p2)
 #define test int tt; cin >> tt; while (tt--)
 
 // ------------------ Solve Function ------------------
+/*
+update a single element in array
+*/
 const int mx=2e5+123;
 int tree[mx*3],arr[mx];
 void init(int id,int b,int e){
@@ -117,4 +121,5 @@ signed main()
    // test
     solve();
     return 0;
+
 }
