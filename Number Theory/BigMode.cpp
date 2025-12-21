@@ -1,6 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 int mod=1e9+7;
+
+const int INV2 = 500000004; // 2⁻¹ mod MOD
+
 int bigmode(int a,int b){
     if(b==0)return 1;
     if(b%2){
@@ -30,5 +33,6 @@ int main(){
     return 0;
 
 }
+
 
 
