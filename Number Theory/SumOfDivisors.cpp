@@ -10,7 +10,18 @@ then number of divisors =(x+1)*(y+1)*(z+1);
 
 */
 
+/*
+prime factorization theke sum of devisors
+if a number can be write with prime factorization like
+p1^(x) *p2^(y)* p^(z)
+p -> means prime number 
+then sum of devisors= (1+p1^(1)+p1^(2)---+p1^(x)  ) * (1+p2^(1)+p2^(2)---+p2^(y)  ) * (1+p3^(1)+p3^(2)---+p3^(x)  )
 
+(1+p1^(1)+p1^(2)---+p1^(x))    == (p1^(x+1) -1 )/(p-1);
+
+
+
+*/
 
 
 
@@ -130,3 +141,4 @@ signed main()
     return 0;
 
 }
+
