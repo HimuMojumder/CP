@@ -2,6 +2,19 @@
 //  author : himu_mojumder
 //  "Do more of what you enjoy most."
 
+/*
+if a number can be write with prime factorization like
+p1^(x) *p2^(y)* p^(z)
+p -> means prime number 
+then number of divisors =(x+1)*(y+1)*(z+1);
+
+*/
+
+
+
+
+
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -115,4 +128,5 @@ signed main()
    // test
    solve();
     return 0;
+
 }
