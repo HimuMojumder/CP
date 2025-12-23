@@ -4,7 +4,9 @@ using namespace std;
 
 // portektar jonno indivituraly calculate korteci
 // calculate co_Prime
-
+/*
+phi(a*b) =phi(a)*phi(b)    //if a and b ar co_prime
+*/
 
 ll phi(ll n){
     ll result =n;
@@ -45,6 +47,10 @@ vector<ll>phii(ll n){
 //Another away of  storing phi /co_prime
 /*
 complexity 0(nlogn)
+  divisor sum theorum 
+  n = n ar divisor gular number of phi ar jogpol
+  example 
+  18 = phi(1) +phi(2) +phi(3)+ phi(6)+phi(9)+phi (18) 
 */
 vector<ll>phiii(ll n){
    vector<ll>result(n+1);
@@ -82,3 +88,4 @@ int main(){
     return 0;
 
 }
+
