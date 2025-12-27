@@ -69,6 +69,7 @@ vector<ll>phiii(ll n){
 /*
 sum of all coprime of N is
 sum=(phi(N)*N)/2;
+phii(1) ar sumation alada babe handle kora lagbe
 
 amra jodi N ar sathe 1 theke N porjon tw shobgula shongkhar GCD bair kore
 akta array te store kori tahole shekhane i jotobar thakbe ta holo if i is a divisor of N
@@ -88,4 +89,5 @@ int main(){
     return 0;
 
 }
+
 
