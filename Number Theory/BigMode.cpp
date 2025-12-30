@@ -15,6 +15,12 @@ int bigmode(int a,int b){
    
 }
 
+int ncr(int n,int r){
+    int tem=(fact[n]*bigmode(fact[r],mod-2))%mod;
+     tem=(tem*bigmode(fact[n-r],mod-2))%mod;
+     return tem;
+}
+
 // if p is a prime number
 //a^p%p =a%p
 //a^-1 % p=(a^(p-2)) %p
@@ -33,6 +39,7 @@ int main(){
     return 0;
 
 }
+
 
 
 
