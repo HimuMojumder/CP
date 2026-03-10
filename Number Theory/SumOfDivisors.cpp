@@ -18,12 +18,23 @@ p -> means prime number
 then sum of devisors= (1+p1^(1)+p1^(2)---+p1^(x)  ) * (1+p2^(1)+p2^(2)---+p2^(y)  ) * (1+p3^(1)+p3^(2)---+p3^(x)  )
 
 (1+p1^(1)+p1^(2)---+p1^(x))    == (p1^(x+1) -1 )/(p-1);
-
-
+ jodi 
+   divisor^2 ar jogpol bear korte hoi
+   tahole oporer equation ta arokom hobe
+     ans=(1+ p1^2 +p1^4 ..p1^x)*(1+ p2^2 +p2^4 ..p2^x)---
 
 */
 
+/*
+ geometir Series formula
 
+   S =  (a(r^n  -1))  / (r-1)
+  here 
+   a=first trem
+   r=common ration 
+   n=number of trem
+   
+*/
 
 
 #include <bits/stdc++.h>
@@ -141,4 +152,5 @@ signed main()
     return 0;
 
 }
+
 
