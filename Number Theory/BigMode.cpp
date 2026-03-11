@@ -30,6 +30,14 @@ int ncr(int n,int r){
 /*
 a^b % mod m =(a^(b % phi(mod)) %mod;
     */
+
+
+/*
+n children m apple dristribut them how many away
+  (m+n-1)C (n-1)
+
+  
+*/
 int main(){
     int a,b;
     cin>>a>>b;
@@ -39,6 +47,7 @@ int main(){
     return 0;
 
 }
+
 
 
 
