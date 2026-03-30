@@ -1,131 +1,129 @@
-//  "Jai Shri Ram"
-//  author : himu_mojumder
-//  "Do more of what you enjoy most."
-
+/*
+Jai Shree Ram
+ 
+  _    _   _____   __  __   _    _ 
+ | |  | | |_   _| |  \/  | | |  | |
+ | |__| |   | |   | \  / | | |  | |
+ |  __  |   | |   | |\/| | | |  | |
+ | |  | |  _| |_  | |  | | | |__| |
+ |_|  |_| |_____| |_|  |_|  \____/ 
+ 
+*/
+ 
 #include <bits/stdc++.h>
 using namespace std;
-
-// ---------------------- Macros ----------------------
-#define upar(value) upper_bound(v.begin(), v.end(), value) - v.begin();
-#define lower(value) lower_bound(v.begin(), v.end(), value) - v.begin();
-#define endl "\n"
-#define yes cout << "YES\n";
-#define no cout << "NO\n";
-#define Yes cout << "Yes" << endl;
-#define No cout << "No" << endl;
-#define gcd __gcd
-#define pb push_back
-#define ll long long
-#define int long long
-
-#define lop(i, a, b) for (int i = a; i < b; ++i)
-#define rlop(i, a, b) for (int i = a; i >= b; --i)
-
-#define input(v) for (int i = 0; i < n; ++i) cin >> (v)[i];
-
-// ------------------ Sorting Macros ------------------
-#define srt(v) sort(v.begin(), v.end());
-#define rsrt(v) sort(v.rbegin(), v.rend());
-#define rev(v) reverse(v.begin(), v.end());
-#define uniq(v) srt(v); v.erase(unique(v.begin(), v.end()), v.end());
-
-// ------------------ Typedefs ------------------
-typedef pair<int, int> pii;
-typedef vector<int> vi;
-typedef vector<pii> vpi;
-typedef vector<vi> vvi;
-typedef map<int, int> mii;
-
-// ------------------ Custom Comparator ------------------
-bool cmp(pair<int, int> &p1, pair<int, int> &p2)
-{
-    if ((p1.first - p1.second) == (p2.first - p2.second))
-        return (p1.first < p2.first);
-    return ((p1.first - p1.second) > (p2.first - p2.second));
-    // je vave cai shebabe return korbo
-}
-
-// ------------------ Algorithm Macros ------------------
-#define lcm(x, y) y * x / gcd(x, y)
-
-// ------------------ Testcase Macro ------------------
-#define test int tt; cin >> tt; while (tt--)
-
+ 
+ 
 // ------------------ Solve Function ------------------
-/*
-updata a range and ask a single element
-in segment tree lagy
-
-*/
-
-
-const int mx=2e5+123;
-int prop[mx*3];
-int vis[mx*3];
-int a[mx];
-void inti(int id,int b,int e){
-    if(b==e){
-        prop[id]=a[b];
-        return ;
+int v[200200];
+struct  node
+{
+    int add;
+    int set;
+    int sum;
+    node(){
+         add=0;
+         set=0;
+         sum=0;
     }
-    int mid=(b+e)/2;
-    inti(id*2,b,mid);
-    inti(id*2+1,mid+1,e);
+};
+node marge(node a,node b){
+      node ans;
+      ans.sum=a.sum+b.sum;
+      return ans;
 }
-void update(int id,int b,int e,int i,int j,int value){
-    if(b>j || e<i)return ;
-    if(b>=i and e<=j){
-       prop[id]+=value;
-       vis[id]=1;
-       return ;
+node t[4*200200];
+void push(int id,int l,int r){
+    if(t[id].set!=0){
+        t[id].sum=t[id].set*(r-l+1);
+        if(l!=r){
+            t[id*2].set=t[id].set;
+            t[id*2+1].set=t[id].set;
+            t[id*2].add=0;
+            t[id*2+1].add=0;
+        }
+        t[id].set=0;
     }
-    int mid=(b+e)/2;
-    update(id*2,b,mid,i,j,value);
-    update(id*2+1,mid+1,e,i,j,value);
+    if(t[id].add!=0){
+        t[id].sum+=(t[id].add*(r-l+1));
+        if(r!=l){
+            t[id*2].add+=t[id].add;
+            t[id*2+1].add+=t[id].add;
+        }
+        t[id].add=0;
+    }
 }
-void shift(int id){
-    prop[id*2]+=prop[id];
-    prop[id*2+1]+=prop[id];
-    vis[id*2]=vis[id*2+1]=1;
-    prop[id]=vis[id]=0;
+void build(int id,int l,int r){
+    if(l==r){
+        t[id].sum=v[l];
+        t[id].set=0;
+        t[id].add=0;
+        return;
+    }
+    int mid=(l+r)/2;
+    build(id*2,l,mid);
+    build(id*2+1,mid+1,r);
+    t[id]=marge(t[id*2],t[id*2+1]);
 }
-int ask(int id,int b,int e,int i){
-      if(i<b||i>e)return 0;
-      if(b==i and e==i){
-         return prop[id];
-      }
-      int mid=(b+e)/2;
-      if(vis[id]){
-        shift(id);
-      }
-      int left=ask(id*2,b,mid,i);
-      int right=ask(id*2+1,mid+1,e,i);
-      return left+right;
+void update_add(int id,int l,int r,int a,int b,int val){
+    push(id,l,r);
+    if(a>r||b<l)return;
+    if(a<=l and r<=b){
+        t[id].add+=val;
+        push(id,l,r);
+        return;
+    }
+    int mid=(l+r)/2;
+    update_add(id*2,l,mid,a,b,val);
+    update_add(id*2+1,mid+1,r,a,b,val);
+    t[id]=marge(t[id*2],t[id*2+1]);
+}
+void update_set(int id,int l,int r,int a,int b,int val){
+     push(id,l,r);
+    if(a>r||b<l)return;
+    if(a<=l and r<=b){
+        t[id].set=val;
+        t[id].add=0;
+        push(id,l,r);
+        return;
+    }
+    int mid=(l+r)/2;
+    update_set(id*2,l,mid,a,b,val);
+    update_set(id*2+1,mid+1,r,a,b,val);
+    t[id]=marge(t[id*2],t[id*2+1]);
+}
+node query(int id,int l,int r,int a,int b){
+     push(id,l,r);
+     if(a>r||b<l)return node();
+     if(a<=l and b>=r){
+        return t[id];
+     }
+     int mid=(l+r)/2;
+     return marge(query(id*2,l,mid,a,b),query(id*2+1,mid+1,r,a,b));
 }
 void solve()
 {
     int n,q;
     cin>>n>>q;
-    for(int i=1;i<=n;i++){
-        cin>>a[i];
-    }
-    inti(1,1,n);
-    while(q--){
-        int type;
-        cin>>type;
-        if(type==1){
-            int a,b,u;
-            cin>>a>>b>>u;
-            update(1,1,n,a,b,u);
+    for(int i=1;i<=n;i++)cin>>v[i];
+    build(1,1,n);
+    for(int i=1;i<=q;i++){
+        int ch,a,b,x;
+        cin>>ch;
+        if(ch==1){
+            cin>>a>>b>>x;
+            update_add(1,1,n,a,b,x);
+        }else if(ch==2){
+            cin>>a>>b>>x;
+            update_set(1,1,n,a,b,x);
         }else{
-            int k;
-            cin>>k;
-            int ans=ask(1,1,n,k);
-            cout<<ans<<endl;
+           cin>>a>>b;
+           node ans=query(1,1,n,a,b);
+           cout<<ans.sum<<endl;
         }
     }
-    
 }
+ 
 // ------------------ Main Function ------------------
 signed main()
 {
