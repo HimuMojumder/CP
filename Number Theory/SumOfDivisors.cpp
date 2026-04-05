@@ -37,58 +37,7 @@ then sum of devisors= (1+p1^(1)+p1^(2)---+p1^(x)  ) * (1+p2^(1)+p2^(2)---+p2^(y)
 */
 
 
-#include <bits/stdc++.h>
-using namespace std;
 
-// ---------------------- Macros ----------------------
-#define upar(value) upper_bound(v.begin(), v.end(), value) - v.begin();
-#define lower(value) lower_bound(v.begin(), v.end(), value) - v.begin();
-#define endl "\n"
-#define yes cout << "YES\n";
-#define no cout << "NO\n";
-#define Yes cout << "Yes" << endl;
-#define No cout << "No" << endl;
-#define gcd __gcd
-#define pb push_back
-#define ll long long
-#define int  unsigned long long
-
-#define lop(i, a, b) for (int i = a; i < b; ++i)
-#define rlop(i, a, b) for (int i = a; i >= b; --i)
-
-#define input(v) for (int i = 0; i < n; ++i) cin >> (v)[i];
-
-// ------------------ Sorting Macros ------------------
-#define srt(v) sort(v.begin(), v.end());
-#define rsrt(v) sort(v.rbegin(), v.rend());
-#define rev(v) reverse(v.begin(), v.end());
-#define uniq(v) srt(v); v.erase(unique(v.begin(), v.end()), v.end());
-
-// ------------------ Typedefs ------------------
-typedef pair<int, int> pii;
-typedef vector<int> vi;
-typedef vector<pii> vpi;
-typedef vector<vi> vvi;
-typedef map<int, int> mii;
-
-// ------------------ Custom Comparator ------------------
-bool cmp(pair<int, int> &p1, pair<int, int> &p2)
-{
-    if ((p1.first - p1.second) == (p2.first - p2.second))
-        return (p1.first < p2.first);
-    return ((p1.first - p1.second) > (p2.first - p2.second));
-    // je vave cai shebabe return korbo
-}
-int mod=1e9+7;
-// ------------------ Algorithm Macros ------------------
-int lcm(int x,int y){
-  return  y*x/__gcd(x,y);
-}  
-
-// ------------------ Testcase Macro ------------------
-#define test int tt; cin >> tt; while (tt--)
-
-// ------------------ Solve Function ------------------
 
 const int INV2 = 500000004; // 2⁻¹ mod MOD
 /*
