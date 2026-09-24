@@ -87,5 +87,13 @@ int32_t main() {
 }
 
 
+//katalan number
+//bracket secquence
+(1/n+1)* (2*n C n);
+
+//star and bars
+(n+k-1) C (k-1)
+ 
+
 
 
